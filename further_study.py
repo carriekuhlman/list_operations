@@ -15,8 +15,12 @@ def custom_len(input_list):
         8
 
     """
+    i = 0
 
-    return 0
+    for item in input_list:
+        i+=1
+
+    return i
 
 
 # For the next four exercises, you'll need to be clever and think about ways
@@ -43,9 +47,12 @@ def custom_append(input_list, value):
         True
 
     """
+    i = -1 
 
-    pass
+    for item in input_list: 
+        i += 1
 
+    input_list[i:] = [input_list[i], value]
 
 def custom_extend(input_list, second_list):
     """Append every item in second_list to input_list.
