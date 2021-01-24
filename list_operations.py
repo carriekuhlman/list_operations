@@ -145,8 +145,7 @@ def replace_third_and_last(input_list):
     True
 
     """
-    input_list[2] = 37
-    input_list[-1] = 37
+    input_list[2], input_list[-1] = 37, 37
 
 def replace_middle(input_list):
     """Replace all elements of a list but the first two and last two with 42 and 37.
