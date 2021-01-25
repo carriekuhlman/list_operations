@@ -15,13 +15,12 @@ def custom_len(input_list):
         8
 
     """
-    i = 0
+    list_length = 0
 
     for item in input_list:
-        i+=1
+        list_length += 1
 
-    return i
-
+    return list_length
 
 # For the next four exercises, you'll need to be clever and think about ways
 # to use list slice assignment.
@@ -47,12 +46,7 @@ def custom_append(input_list, value):
         True
 
     """
-    i = -1 
-
-    for item in input_list: 
-        i += 1
-
-    input_list[i:] = [input_list[i], value]
+    input_list[-1:] = [input_list[-1], value]
 
 def custom_extend(input_list, second_list):
     """Append every item in second_list to input_list.
@@ -69,9 +63,8 @@ def custom_extend(input_list, second_list):
         True
 
     """
-
-    pass
-
+    for item in second_list: 
+        input_list[-1:] = [input_list[-1], item]
 
 def custom_insert(input_list, index, value):
     """Insert value at index in the list.
@@ -88,8 +81,7 @@ def custom_insert(input_list, index, value):
 
     """
 
-    pass
-
+    input_list[index:index + 2] = [value, input_list[index]]
 
 def custom_remove(input_list, value):
     """Remove the first item of the value in list.
@@ -107,8 +99,10 @@ def custom_remove(input_list, value):
 
     """
 
-    pass
-
+    for i, item in enumerate(input_list): 
+        if item == value: 
+            input_list[i:] = input_list[i+1:]
+            break    
 
 def custom_pop(input_list):
     """Remove the last item in the list and returns it.
@@ -123,12 +117,25 @@ def custom_pop(input_list):
         'March'
         >>> months
         ['Jan', 'Feb']
-
     """
 
-    return None
+    # last_value = input_list[-1]
+    # input_list[-1:] = []
 
+    # return last_value
 
+    counter = -1
+
+    for item in input_list: 
+        counter += 1
+
+    for i, item in enumerate(input_list): 
+        if i < counter: 
+            pass
+        else: 
+            input_list[-1:] = []
+            return item
+    
 def custom_index(input_list, value):
     """Return the index of the first item of value found in input_list.
 
@@ -142,8 +149,9 @@ def custom_index(input_list, value):
 
     """
 
-    return 0
-
+    for i, item in enumerate(input_list): 
+        if item == value: 
+            return i
 
 def custom_count(input_list, value):
     """Return the number of times value appears in the list.
@@ -157,9 +165,13 @@ def custom_count(input_list, value):
         2
 
     """
+    counter = 0
 
-    return 0
+    for item in input_list:
+        if item == value: 
+            counter += 1
 
+    return counter
 
 def custom_reverse(input_list):
     """Reverse the elements of the input_list.
@@ -176,9 +188,7 @@ def custom_reverse(input_list):
         True
 
     """
-
-    pass
-
+    input_list[:] = input_list[::-1]
 
 def custom_contains(input_list, value):
     """Return True or False if value is in the input_list.
@@ -197,8 +207,11 @@ def custom_contains(input_list, value):
 
     """
 
-    return None
+    for item in input_list:
+        if item == value: 
+            return True 
 
+    return False
 
 def custom_equality(some_list, another_list):
     """Return True if passed lists are identical, False otherwise.
@@ -216,8 +229,11 @@ def custom_equality(some_list, another_list):
 
     """
 
-    return None
+    for i, item in enumerate(some_list):
+        if some_list[i] != another_list[i]:
+            return False
 
+    return True 
 
 # This is the part were we actually run the doctests.
 
